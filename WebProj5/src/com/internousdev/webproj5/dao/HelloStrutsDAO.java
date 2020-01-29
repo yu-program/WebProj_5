@@ -1,4 +1,4 @@
-package com.internousdev.webproj4.dao;
+package com.internousdev.webproj5.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,24 +7,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.internousdev.webproj4.dto.HelloStrutsDTO;
-import com.internousdev.webproj4.util.DBConnector;
+import com.internousdev.webproj5.util.DBConnector;
+import com.internousdev.webproj5.dto.HelloStrutsDTO;
 
 public class HelloStrutsDAO {
 
-	//Listを定義。
 	List<HelloStrutsDTO> helloStrutsDTOList = new ArrayList<HelloStrutsDTO>();
 
-	//List型のメソッド。
 	public List<HelloStrutsDTO> select(){
 		DBConnector db = new DBConnector();
 		Connection con = db.getConnection();
 
-
-		String sql = "select * from users";
-
+		String sql ="select * from users";
 		try {
-//PreparedStatementはDBまで値を運んでくれる箱のイメージ
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 
@@ -36,15 +31,8 @@ public class HelloStrutsDAO {
 				dto.setResult("MySQLと接続できます。");
 				helloStrutsDTOList.add(dto);
 			}
-		}catch(SQLException e) {
-			e.printStackTrace();
+		}catch() {
+
 		}
-		try {
-			con.close();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
-//helloStrutsDTOListを呼び出し元であるActionクラスに返す。
-		return helloStrutsDTOList;
 	}
 }
