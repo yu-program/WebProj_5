@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.internousdev.webproj5.util.DBConnector;
 import com.internousdev.webproj5.dto.HelloStrutsDTO;
+import com.internousdev.webproj5.util.DBConnector;
 
 public class HelloStrutsDAO {
 
@@ -31,8 +31,14 @@ public class HelloStrutsDAO {
 				dto.setResult("MySQLと接続できます。");
 				helloStrutsDTOList.add(dto);
 			}
-		}catch() {
-
+		}catch(SQLException e) {
+			e.printStackTrace();
 		}
+		try {
+			con.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return helloStrutsDTOList;
 	}
 }
