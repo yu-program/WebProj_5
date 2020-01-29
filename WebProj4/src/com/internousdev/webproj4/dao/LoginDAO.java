@@ -1,0 +1,59 @@
+package com.internousdev.webproj4.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.internousdev.webproj4.dto.LoginDTO;
+import com.internousdev.webproj4.util.DBConnector;
+
+public class LoginDAO {
+
+	List<LoginDTO> loginDTOList = new ArrayList<LoginDTO>();
+
+	public List<LoginDTO> select(String username,String password){
+
+		DBConnector db = new DBConnector();
+		Connection con = db.getConnection();
+
+		String sql = "select * from users where user_name=? and password=?";
+
+		try {
+		//PreparedStatementはDBまで値を運んでくれる箱のイメージ
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1,username);
+			ps.setString(2, password);
+			//select文を実行する(executeQuery())と必ず戻り値はResultSetが返ってくる。
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()) {
+			//select文で取得した情報をString型に変換(setString(""))してインスタンスしたDTOクラスに格納する。
+			//LoginDTOクラスのsetName,setPasswordを利用している。(dtoをどこからインスタンスしているのか見ればわかる)
+				LoginDTO dto = new LoginDTO();
+				dto.setUsername(rs.getString("user_name"));
+				dto.setPassword(rs.getString("password"));
+			//dtoをloginDTOListに追加する。
+				loginDTOList.add(dto);
+			}
+
+			if(loginDTOList.size() <= 0) {
+				LoginDTO dto = new LoginDTO();
+				dto.setUsername("該当なし");
+				dto.setPassword("該当なし");
+				loginDTOList.add(dto);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		try{
+			con.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		//dtoに入った値を呼び出し元であるActionクラスに返す。
+		return loginDTOList;
+	}
+}
