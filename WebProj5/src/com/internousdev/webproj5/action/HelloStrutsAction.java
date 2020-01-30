@@ -22,13 +22,14 @@ public class HelloStrutsAction extends ActionSupport implements SessionAware {
 		helloStrutsDTOList = dao.select();
 
 		if(helloStrutsDTOList.size() > 0) {
-			session.put("helloStrutsDTOList","helloStrutsDTOList");
+			session.put("helloStrutsDTOList",helloStrutsDTOList);
 			ret = SUCCESS;
 		}else{
 			ret = ERROR;
 		}
 		return ret;
 	}
+
 	public Map<String , Object> getSession(){
 		return session;
 	}

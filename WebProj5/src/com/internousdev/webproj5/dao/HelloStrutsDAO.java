@@ -24,7 +24,7 @@ public class HelloStrutsDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while(rs.next()) {
-				HelloStrutsDTO dto = new HelloStrutsDTO();
+				HelloStrutsDTO dto = new HelloStrutsDTO();;
 				dto.setUserId(rs.getInt("user_Id"));
 				dto.setUserName(rs.getString("user_name"));
 				dto.setPassword(rs.getString("password"));

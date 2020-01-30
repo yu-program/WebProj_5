@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <link rel ="stylesheet" type ="text/css" href ="./css/style.css">
     <title>HelloStruts</title>
    </head>
@@ -18,12 +18,13 @@
            <th>PASSWORD</th>
            <th>RESULT</th>
          </tr>
-         <s:iterator value="HelloStrutsDTOList">
+         <!-- "#session.xxxx"でsessionで持ってるListをアクセス先にしている -->
+         <s:iterator value="#session.helloStrutsDTOList">
            <tr>
-             <td><s;property value="user_id"</td>
-             <th>USERNAME</th>
-             <th>PASSWORD</th>
-             <th>RESULT</th>
+             <td><s:property value="userId"/></td>
+             <td><s:property value="userName"/></td>
+             <td><s:property value="password"/></td>
+             <td><s:property value="result"/></td>
          </tr>
          </s:iterator>
        </tbody>
