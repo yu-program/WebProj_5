@@ -11,7 +11,7 @@
      <h1>エラーが発生しました</h1>
      <br>
      <h3>ログインできません。</h3>
-     <s:if test='(loginDTOList.get(0).username)=="該当なし"'>
+     <s:if test='(#session.loginDTOList.get(0).username)=="該当なし"'>
        該当者はいませんでした。
      </s:if>
      <br>
@@ -22,8 +22,7 @@
            <th>USERNAME</th>
            <th>PASSWORD</th>
          </tr>
-
-         <s:iterator value="loginDTOList">
+         <s:iterator value="#session.loginDTOList">
            <tr>
              <td><s:property value="username"/></td>
              <td><s:property value="password"/></td>

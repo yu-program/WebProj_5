@@ -15,22 +15,22 @@
        <s:submit value="Welcome"/>
      </s:form>
 
-<%--      <s:form action="InquiryAction"> --%>
-<%--        <s:submit value="問い合わせ"/> --%>
-<%--      </s:form> --%>
+     <s:form action="InquiryAction">
+       <s:submit value="問い合わせ"/>
+     </s:form>
 
-<!--      <h3>新規ユーザー登録</h3> -->
-<!--      GET通信<br> -->
-<%--      <s:form action="TestAction" method= "get"> --%>
-<%--        <s:textfield name = "username"/> --%>
-<%--        <s:password name = "password"/> --%>
-<%--        <s:submit value = "送信"/> --%>
-<%--      </s:form> --%>
-<!--      POST通信 -->
-<%--      <s:form action="TestAction" method= "post"> --%>
-<%--        <s:textfield name = "username"/> --%>
-<%--        <s:password name = "password"/> --%>
-<%--        <s:submit value = "送信"/> --%>
-<%--      </s:form> --%>
+     <h3>新規ユーザー登録</h3>
+     GET通信<br>
+     <s:form action="TestAction" method= "get">
+       <s:textfield name = "username"/>
+       <s:password name = "password"/>
+       <s:submit value = "送信"/>
+     </s:form>
+     POST通信
+     <s:form action="TestAction" method= "post">
+       <s:textfield name = "username"/>
+       <s:password name = "password"/>
+       <s:submit value = "送信"/>
+     </s:form>
    </body>
 </html>

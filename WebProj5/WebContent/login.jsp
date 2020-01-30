@@ -5,28 +5,22 @@
   <head>
     <meta charset="UTF-8">
     <link rel ="stylesheet" type ="text/css" href ="./css/style.css">
-    <title>LoginError</title>
+    <title>LOGIN</title>
    </head>
    <body>
-     <h1>エラーが発生しました</h1>
+     <!-- session中身であるloginDTOListのindexが0番目のusername -->
+     <s:property value="#session.loginDTOList.get(0).username"/>さん、ようこそ！
      <br>
-     <h3>ログインできません。</h3>
-     <s:if test='(loginDTOList.get(0).username)=="該当なし"'>
-       該当者はいませんでした。
-     </s:if>
-     <br>
-
      <table>
        <tbody>
          <tr>
-           <th>USERNAME</th>
+           <th>USERNAMME</th>
            <th>PASSWORD</th>
          </tr>
-
-         <s:iterator value="loginDTOList">
+         <s:iterator value = "#session.loginDTOList">
            <tr>
-             <td><s:property value="username"/></td>
-             <td><s:property value="password"/></td>
+             <td><s:property value ="username"/></td>
+             <td><s:property value ="password"/></td>
            </tr>
          </s:iterator>
        </tbody>
